@@ -17,7 +17,7 @@
 
 ---
 
-## Tematica Seleccionada: 1. Gestion de Inventario
+## Tematica Seleccionada: 1. Gestión de Inventario
 
 El programa administra un inventario de productos comerciales utilizando una matriz (lista de listas), donde cada fila representa un producto y las columnas representan sus atributos.
 
@@ -33,7 +33,7 @@ El sistema inicia con 6 productos precargados (hardcodeados) en la matriz para p
 
 ---
 
-## Funcionalidades del Menu
+## Funcionalidades del Menú
 1. Dar de alta un registro: Permite ingresar un nuevo producto validando que el codigo identificador no este repetido.
 2. Consultar un registro: Busca un producto por su codigo y muestra todos sus datos en pantalla.
 3. Modificar un registro: Localiza el producto por codigo y permite modificar uno o mas de sus campos (nombre, categoria, precio o stock).
@@ -57,7 +57,7 @@ El sistema inicia con 6 productos precargados (hardcodeados) en la matriz para p
 
 ---
 
-## Modularizacion y Estructura del Codigo
+## Modularización y Estructura del Código
 El proyecto esta dividido en modulos con separacion clara de responsabilidades:
 - principal.py: Inicializa la matriz con los registros hardcodeados y coordina el menu principal.
 - menu.py: Contiene la presentacion visual del menu y pausas de pantalla.
@@ -69,7 +69,7 @@ Nota de diseno: Todas las funciones reciben la matriz o listas por parametro y r
 
 ---
 
-## Instrucciones de Ejecucion
+## Instrucciones de Ejecución
 1. Abrir la terminal en la carpeta del proyecto.
 2. Ejecutar el siguiente comando:
 
