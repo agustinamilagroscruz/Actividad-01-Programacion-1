@@ -33,9 +33,8 @@ def contar_registros_por_categoria(matriz, categoria):
         int: Cantidad de productos en dicha categoría.
     """
     contador = 0
-    categoria_limpia = categoria.strip().upper()
-    for prod in matriz:
-        if str(prod[2]).strip().upper() == categoria_limpia:
+    for i in range(len(matriz)):
+        if matriz[i][2] == categoria:
             contador += 1
     return contador
 
@@ -51,9 +50,10 @@ def calcular_valor_total_inventario(matriz):
         float: Valor monetario total del inventario.
     """
     total = 0.0
-    for prod in matriz:
-        precio = prod[3]
-        stock = prod[4]
+
+    for i in range(len(matriz)):
+        precio = matriz[i][3]
+        stock = matriz[i][4]
         total += precio * stock
     return total
 
@@ -71,8 +71,8 @@ def calcular_precio_promedio(matriz):
     if len(matriz) == 0:
         return 0.0
     suma_precios = 0.0
-    for prod in matriz:
-        suma_precios += prod[3]
+    for i in range(len(matriz)):
+        suma_precios += matriz[i][3]
     return suma_precios / len(matriz)
 
 
@@ -86,12 +86,12 @@ def obtener_producto_mayor_precio(matriz):
     Retorna:
         list: Fila del producto con mayor precio, o None si no hay registros.
     """
-    if len(matriz) == 0:
-        return None
-    mayor = matriz[0]
-    for i in range(1, len(matriz)):
-        if matriz[i][3] > mayor[3]:
-            mayor = matriz[i]
+    mayor = []
+    if len(matriz) > 0:
+        mayor = matriz[0]
+        for i in range(1, len(matriz)):
+            if matriz[i][3] > mayor[3]:
+                mayor = matriz[i]
     return mayor
 
 
@@ -122,7 +122,8 @@ def mostrar_panel_estadisticas(matriz, categorias):
         matriz (list): Matriz de productos.
         categorias (list): Lista de categorías válidas.
     """
-    print("\n" + "=" * 60)
+    print()
+    print("=" * 60)
     print("           PANEL DE PROCESAMIENTO ESTADÍSTICO")
     print("=" * 60)
 
@@ -134,13 +135,14 @@ def mostrar_panel_estadisticas(matriz, categorias):
         return
 
     # 1. Total general de registros
-    print(f"1. Cantidad total de productos en inventario: {total_registros}")
+    print("1. Cantidad total de productos en inventario:", total_registros)
 
     # 2. Cantidad de registros por categoría determinada (se consulta al usuario o se lista)
-    print("\n2. Cantidad de productos por categoría:")
-    for cat in categorias:
-        cant_cat = contar_registros_por_categoria(matriz, cat)
-        print(f"   - {cat:<15}: {cant_cat} producto(s)")
+    print()
+    print("2. Cantidad de productos por categoría:")
+    for i in range(len(categorias)):
+        cant_cat = contar_registros_por_categoria(matriz, categorias[i])
+        print("   -", categorias[i], ":", cant_cat, "producto(s)")
 
     # 3. Estadísticas adicionales de la temática
     valor_total = calcular_valor_total_inventario(matriz)
@@ -148,14 +150,15 @@ def mostrar_panel_estadisticas(matriz, categorias):
     prod_mas_caro = obtener_producto_mayor_precio(matriz)
     prod_menos_stock = obtener_producto_menor_stock(matriz)
 
-    print("\n3. Métricas adicionales del inventario:")
-    print(f"   - Valor monetario total del inventario: ${valor_total:,.2f}")
-    print(f"   - Precio unitario promedio:              ${precio_promedio:.2f}")
+    print()
+    print("3. Métricas adicionales del inventario:")
+    print("   - Valor monetario total del inventario: $", valor_total)
+    print("   - Precio unitario promedio: $", precio_promedio)
 
-    if prod_mas_caro is not None:
-        print(f"   - Producto más costoso:                  [{prod_mas_caro[0]}] {prod_mas_caro[1]} (${prod_mas_caro[3]:.2f})")
-    
-    if prod_menos_stock is not None:
-        print(f"   - Producto con menor stock (reposición): [{prod_menos_stock[0]}] {prod_menos_stock[1]} ({prod_menos_stock[4]} unidades)")
+    if len(prod_mas_caro) > 0:
+        print("   - Producto más costoso:", prod_mas_caro[0], prod_mas_caro[1], "($", prod_mas_caro[3], ")")
+
+    if len(prod_menos_stock) > 0:
+        print("   - Producto con menor stock (reposición):", prod_menos_stock[0], prod_menos_stock[1], "(", prod_menos_stock[4], "unidades)")
 
     print("=" * 60)
