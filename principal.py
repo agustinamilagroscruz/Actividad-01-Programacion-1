@@ -36,53 +36,41 @@ def inicializar_datos():
     return matriz_productos, categorias
 
 
-def main():
-    """
-    Función principal que coordina el ciclo de vida del sistema,
-    llamando a las distintas funcionalidades según la opción elegida por el usuario.
-    """
-    matriz_productos, categorias = inicializar_datos()
-    ejecutando = True
-
-    while ejecutando:
-        menu.mostrar_menu_principal()
-        opcion = menu.pedir_opcion_menu_principal()
-
-        if opcion == 1:
-            crud.alta_registro(matriz_productos, categorias)
-            menu.pausar()
-
-        elif opcion == 2:
-            crud.consultar_registro(matriz_productos)
-            menu.pausar()
-
-        elif opcion == 3:
-            crud.modificar_registro(matriz_productos, categorias)
-            menu.pausar()
-
-        elif opcion == 4:
-            crud.eliminar_registro(matriz_productos)
-            menu.pausar()
-
-        elif opcion == 5:
-            crud.mostrar_todos_los_registros(matriz_productos)
-            menu.pausar()
-
-        elif opcion == 6:
-            crud.consultar_por_categoria(matriz_productos, categorias)
-            menu.pausar()
-
-        elif opcion == 7:
-            estadisticas.mostrar_panel_estadisticas(matriz_productos, categorias)
-            menu.pausar()
-
-        elif opcion == 8:
-            print("\n" + "=" * 55)
-            print("  ¡Gracias por utilizar el Sistema de Inventario!")
-            print("                 Programa finalizado.")
-            print("=" * 55 + "\n")
-            ejecutando = False
+"""
+llamando a las distintas funcionalidades según la opción elegida por el usuario.
+"""
+matriz_productos, categorias = inicializar_datos()
 
 
-if __name__ == "__main__":
-    main()
+opcion = 0
+
+while opcion != 8:
+    menu.mostrar_menu_principal()
+    opcion = menu.pedir_opcion_menu_principal()
+
+    if opcion == 1:
+        crud.alta_registro(matriz_productos, categorias)
+        menu.pausar()
+    elif opcion == 2:
+        crud.consultar_registro(matriz_productos)
+        menu.pausar()
+    elif opcion == 3:
+        crud.modificar_registro(matriz_productos, categorias)
+        menu.pausar()
+    elif opcion == 4:
+        crud.eliminar_registro(matriz_productos)
+        menu.pausar()
+    elif opcion == 5:
+        crud.mostrar_todos_los_registros(matriz_productos)
+        menu.pausar()
+    elif opcion == 6:
+        crud.consultar_por_categoria(matriz_productos, categorias)
+        menu.pausar()
+    elif opcion == 7:
+        estadisticas.mostrar_panel_estadisticas(matriz_productos, categorias)
+        menu.pausar()
+    else:
+        print("\n" + "=" * 55)
+        print("  ¡Gracias por utilizar el Sistema de Inventario!")
+        print("                 Programa finalizado.")
+        print("=" * 55 + "\n")
