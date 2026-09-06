@@ -5,9 +5,6 @@ de los registros almacenados en la matriz de inventario.
 Materia: Programación 1 - FAIN UADE
 """
 
-import validaciones
-
-
 def calcular_total_registros(matriz):
     """
     Calcula la cantidad total de productos almacenados en la matriz.
