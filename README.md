@@ -65,7 +65,8 @@ El proyecto está dividido en módulos con separación clara de responsabilidade
 - estadisticas.py: Contiene las funciones de procesamiento estadístico y cálculos matemáticos.
 - validaciones.py: Contiene las funciones de validación de datos ingresados por el usuario.
 
-Nota de diseño: Todas las funciones reciben la matriz o listas por parámetro y retornan valores cuando corresponde, sin utilizar variables globales.
+Nota de diseño: Todas las funciones que involucran el uso de matrices o listas
+las reciben mediante parámetros y utilizan valores de retorno cuando corresponde.
 
 ---
 
