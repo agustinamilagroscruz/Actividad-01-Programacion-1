@@ -37,7 +37,7 @@ def inicializar_datos():
 
 
 """
-llamando a las distintas funcionalidades según la opción elegida por el usuario.
+Se inicializan los datos y luego se coordinan las distintas funcionalidades según la opción elegida por el usuario.
 """
 matriz_productos, categorias = inicializar_datos()
 
@@ -70,7 +70,8 @@ while opcion != 8:
         estadisticas.mostrar_panel_estadisticas(matriz_productos, categorias)
         menu.pausar()
     else:
-        print("\n" + "=" * 55)
+        print()
+        print("=" * 55)
         print("  ¡Gracias por utilizar el Sistema de Inventario!")
         print("                 Programa finalizado.")
         print("=" * 55 + "\n")
