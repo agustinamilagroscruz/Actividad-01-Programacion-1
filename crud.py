@@ -187,7 +187,7 @@ def eliminar_registro(matriz):
     print()
     print("Producto encontrado:", prod[0], prod[1], "- Categoría:", prod[2], "- Precio: $", prod[3], "- Stock:", prod[4])
 
-    confirmacion = validaciones.validar_texto_no_vacio("¿Está seguro de que desea eliminar este producto? (S/N): ").upper()
+    confirmacion = validaciones.validar_texto_no_vacio("¿Está seguro de que desea eliminar este producto? (S/N): ")
 
     if confirmacion == "S" or confirmacion == "s" or confirmacion == "SI" or confirmacion == "si":
         matriz.pop(indice)
@@ -274,7 +274,7 @@ def consultar_por_categoria(matriz, categorias):
     categoria_seleccionada = validaciones.seleccionar_categoria(categorias)
     print()
     print("PRODUCTOS EN LA CATEGORÍA:", categoria_seleccionada)
-    
+
     ancho_codigo = calcular_ancho_texto(matriz, 0, "CÓDIGO")
     ancho_nombre = calcular_ancho_texto(matriz, 1, "NOMBRE")
     ancho_categoria = calcular_ancho_texto(matriz, 2, "CATEGORÍA")
