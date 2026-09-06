@@ -74,4 +74,4 @@ while opcion != 8:
         print("=" * 55)
         print("  ¡Gracias por utilizar el Sistema de Inventario!")
         print("                 Programa finalizado.")
-        print("=" * 55 + "\n")
+        print("=" * 55)
