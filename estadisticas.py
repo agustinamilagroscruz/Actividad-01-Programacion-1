@@ -76,38 +76,38 @@ def calcular_precio_promedio(matriz):
 def obtener_producto_mayor_precio(matriz):
     """
     Determina el producto con el mayor precio unitario en el inventario.
-    
+
     Parámetros:
         matriz (list): Matriz de productos.
-        
+
     Retorna:
-        list: Fila del producto con mayor precio, o None si no hay registros.
+        Fila del producto con mayor precio, o -1 si no hay registros.
     """
-    if len(matriz) == 0:
-        return None
-    mayor = matriz[0]
-    for i in range(1, len(matriz)):
-        if matriz[i][3] > mayor[3]:
-            mayor = matriz[i]
+    mayor = -1
+    if len(matriz) > 0:
+        mayor = matriz[0]
+        for i in range(1, len(matriz)):
+            if matriz[i][3] > mayor[3]:
+                mayor = matriz[i]
     return mayor
 
 
 def obtener_producto_menor_stock(matriz):
     """
     Determina el producto con menor cantidad de stock disponible (crítico para reposición).
-    
+
     Parámetros:
         matriz (list): Matriz de productos.
-        
+
     Retorna:
-        list: Fila del producto con menor stock, o None si no hay registros.
+        Fila del producto con menor stock, o -1 si no hay registros.
     """
-    if len(matriz) == 0:
-        return None
-    menor = matriz[0]
-    for i in range(1, len(matriz)):
-        if matriz[i][4] < menor[4]:
-            menor = matriz[i]
+    menor = -1
+    if len(matriz) > 0:
+        menor = matriz[0]
+        for i in range(1, len(matriz)):
+            if matriz[i][4] < menor[4]:
+                menor = matriz[i]
     return menor
 
 
@@ -152,10 +152,10 @@ def mostrar_panel_estadisticas(matriz, categorias):
     print("   - Valor monetario total del inventario: $", valor_total)
     print("   - Precio unitario promedio: $", precio_promedio)
 
-    if prod_mas_caro is not None:
+    if prod_mas_caro != -1:
         print("   - Producto más costoso:", prod_mas_caro[0], prod_mas_caro[1], "($", prod_mas_caro[3], ")")
 
-    if prod_menos_stock is not None:
+    if prod_menos_stock != -1:
         print("   - Producto con menor stock (reposición):", prod_menos_stock[0], prod_menos_stock[1], "(", prod_menos_stock[4], "unidades)")
 
     print("=" * 60)
