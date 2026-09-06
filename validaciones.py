@@ -10,16 +10,11 @@ def validar_texto_no_vacio(mensaje):
     """
     Solicita un texto al usuario y asegura que no quede vacío ni compuesto solo por espacios.
     
-    Parámetros:
-        mensaje (str): El mensaje que se muestra al solicitar el dato.
-        
-    Retorna:
-        str: El texto ingresado sin espacios en los extremos.
     """
-    texto = input(mensaje).strip()
-    while len(texto) == 0:
+    texto = input(mensaje)
+    while texto == "":
         print(">> Error: El campo no puede estar vacío. Intente nuevamente.")
-        texto = input(mensaje).strip()
+        texto = input(mensaje)
     return texto
 
 
@@ -34,18 +29,14 @@ def validar_entero(mensaje, minimo=0):
     Retorna:
         int: El número entero validado.
     """
-    valido = False
-    numero = 0
-    while not valido:
-        entrada = input(mensaje).strip()
-        try:
-            numero = int(entrada)
-            if numero >= minimo:
-                valido = True
-            else:
-                print(f">> Error: El número debe ser mayor o igual a {minimo}.")
-        except ValueError:
-            print(">> Error: Debe ingresar un número entero válido.")
+    print(mensaje, end="")
+    numero = int(input())
+
+    while numero < minimo:
+        print(">> Error: El número debe ser mayor o igual a", minimo)
+        print(mensaje, end="")
+        numero = int(input())
+
     return numero
 
 
@@ -60,18 +51,14 @@ def validar_flotante(mensaje, minimo=0.01):
     Retorna:
         float: El número decimal validado.
     """
-    valido = False
-    numero = 0.0
-    while not valido:
-        entrada = input(mensaje).strip().replace(",", ".")
-        try:
-            numero = float(entrada)
-            if numero >= minimo:
-                valido = True
-            else:
-                print(f">> Error: El valor debe ser mayor o igual a {minimo}.")
-        except ValueError:
-            print(">> Error: Debe ingresar un valor numérico válido (ejemplo: 1250.50).")
+    print(mensaje, end="")
+    numero = float(input())
+
+    while numero < minimo:
+        print(">> Error: El valor debe ser mayor o igual a", minimo)
+        print(mensaje, end="")
+        numero = float(input())
+
     return numero
 
 
@@ -86,11 +73,14 @@ def validar_codigo_unico(codigo, matriz):
     Retorna:
         bool: True si el código ya existe, False en caso contrario.
     """
-    codigo_limpio = codigo.strip().upper()
-    for fila in matriz:
-        if str(fila[0]).strip().upper() == codigo_limpio:
-            return True
-    return False
+    encontrado = False
+    i = 0
+    while i < len(matriz) and not encontrado:
+        if matriz[i][0] == codigo:
+            encontrado = True
+        else:
+            i += 1
+    return encontrado
 
 
 def seleccionar_categoria(categorias):
@@ -103,15 +93,11 @@ def seleccionar_categoria(categorias):
     Retorna:
         str: El nombre de la categoría seleccionada.
     """
-    print("\nCategorías disponibles:")
+    print()
+    print("Categorías disponibles:")
     for i in range(len(categorias)):
-        print(f"  [{i + 1}] {categorias[i]}")
-        
-    opcion = validar_entero(f"Seleccione una categoría (1 - {len(categorias)}): ", minimo=1)
-    while opcion > len(categorias):
-        print(f">> Error: La opción debe estar entre 1 y {len(categorias)}.")
-        opcion = validar_entero(f"Seleccione una categoría (1 - {len(categorias)}): ", minimo=1)
-        
+        print(i + 1, "-", categorias[i])
+    opcion = validar_opcion_menu(1, len(categorias))
     return categorias[opcion - 1]
 
 
@@ -126,8 +112,11 @@ def validar_opcion_menu(opcion_min, opcion_max):
     Retorna:
         int: La opción seleccionada válida.
     """
-    opcion = validar_entero("Ingrese una opción: ", minimo=opcion_min)
-    while opcion > opcion_max:
-        print(f">> Error: Opción fuera de rango. Debe ser entre {opcion_min} y {opcion_max}.")
-        opcion = validar_entero("Ingrese una opción: ", minimo=opcion_min)
+    print("Ingrese una opción entre", opcion_min, "y", opcion_max, end=": ")
+    opcion = int(input())
+
+    while opcion < opcion_min or opcion > opcion_max:
+        print(">> Error: Opción fuera de rango. Debe ser entre", opcion_min, "y", opcion_max)
+        print("Ingrese una opción entre", opcion_min, "y", opcion_max, end=": ")
+        opcion = int(input())
     return opcion
