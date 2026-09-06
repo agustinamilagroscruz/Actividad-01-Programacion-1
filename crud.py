@@ -266,6 +266,15 @@ def consultar_por_categoria(matriz, categorias):
     print("             CONSULTA DE PRODUCTOS POR CATEGORÍA")
     print("=" * 80)
 
+    if len(matriz) == 0:
+        print(">> No hay productos registrados en el sistema.")
+        print("=" * 80)
+        return
+
+    categoria_seleccionada = validaciones.seleccionar_categoria(categorias)
+    print()
+    print("PRODUCTOS EN LA CATEGORÍA:", categoria_seleccionada)
+    
     ancho_codigo = calcular_ancho_texto(matriz, 0, "CÓDIGO")
     ancho_nombre = calcular_ancho_texto(matriz, 1, "NOMBRE")
     ancho_categoria = calcular_ancho_texto(matriz, 2, "CATEGORÍA")
