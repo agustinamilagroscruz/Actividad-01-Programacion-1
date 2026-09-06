@@ -8,7 +8,7 @@ Materia: Programación 1 - FAIN UADE
 
 def validar_texto_no_vacio(mensaje):
     """
-    Solicita un texto al usuario y asegura que no quede vacío ni compuesto solo por espacios.
+    Solicita un texto al usuario y asegura que no quede vacío.
     
     """
     texto = input(mensaje)
@@ -18,13 +18,13 @@ def validar_texto_no_vacio(mensaje):
     return texto
 
 
-def validar_entero(mensaje, minimo=0):
+def validar_entero(mensaje, minimo):
     """
     Solicita un número entero y verifica que sea válido y mayor o igual al mínimo establecido.
     
     Parámetros:
         mensaje (str): Mensaje descriptivo para el usuario.
-        minimo (int): Valor mínimo permitido (por defecto 0).
+        minimo (int): Valor mínimo permitido.
         
     Retorna:
         int: El número entero validado.
@@ -40,13 +40,13 @@ def validar_entero(mensaje, minimo=0):
     return numero
 
 
-def validar_flotante(mensaje, minimo=0.01):
+def validar_flotante(mensaje, minimo):
     """
     Solicita un número decimal (flotante) y verifica que sea mayor o igual al mínimo.
     
     Parámetros:
         mensaje (str): Mensaje descriptivo para el usuario.
-        minimo (float): Valor mínimo permitido (por defecto 0.01).
+        minimo (float): Valor mínimo permitido.
         
     Retorna:
         float: El número decimal validado.
