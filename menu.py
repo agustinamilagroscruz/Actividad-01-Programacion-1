@@ -12,7 +12,8 @@ def mostrar_menu_principal():
     """
     Imprime en pantalla las opciones del menú principal del sistema.
     """
-    print("\n" + "=" * 55)
+    print()
+    print("=" * 55)
     print("      SISTEMA DE GESTIÓN DE INVENTARIO - UADE P1")
     print("=" * 55)
     print("  [1] Dar de alta un producto")
@@ -40,4 +41,5 @@ def pausar():
     """
     Realiza una pausa en la ejecución para que el usuario pueda leer los resultados antes de continuar.
     """
-    input("\nPresione [ENTER] para continuar...")
+    print()
+    input("Presione [ENTER] para continuar...")
