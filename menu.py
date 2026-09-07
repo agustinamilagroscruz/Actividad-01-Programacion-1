@@ -5,7 +5,7 @@ y gestionar la interacción visual con el usuario por consola.
 Materia: Programación 1 - FAIN UADE
 """
 
-import validaciones
+from validaciones import validar_opcion_menu
 
 
 def mostrar_menu_principal():
@@ -34,7 +34,7 @@ def pedir_opcion_menu_principal():
     Retorna:
         int: Número de opción seleccionada (entre 1 y 8).
     """
-    return validaciones.validar_opcion_menu(1, 8)
+    return validar_opcion_menu(1, 8)
 
 
 def pausar():
